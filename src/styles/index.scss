@@ -48,7 +48,11 @@ body {
         justify-content: space-around;
         align-items: center;
 
-        .logo {;
+        @include desktop {
+
+        }
+
+        .logo {
             cursor: $pointer;
         }
 
@@ -61,6 +65,12 @@ body {
             padding: .5em 2em;
             cursor: $pointer;
             font-size: $font24;
+        }
+
+        .toggle {
+            @include desktop {
+                display: none;
+            }
         }
 
         .toggle span{

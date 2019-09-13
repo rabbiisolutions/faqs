@@ -1,3 +1,5 @@
+$pointer: pointer;
+
 html {
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
@@ -9,4 +11,58 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Nunito", sans-serif;
     display: grid;
     width: 100%;
+
+    .faqs-view {
+        margin: 20% 5%;
+
+        .faqs-title {
+            color: #B200CD;
+            font-weight: bold;
+            font-size: 2.5em;
+        }
+
+        .tabs-view {
+            margin: 10% 3%;
+
+            .tabs {
+                background-color: aliceblue;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                padding: 3%;
+
+                .tab-link {
+                    cursor: $pointer;
+                }
+            }
+
+            .tabs-content {
+                margin: 5% 3%;
+
+                .tab-content {
+
+                }
+            }
+        }
+    }
+
+    .panel {
+        display: none;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .section-toggle {
+        cursor: $pointer;
+        border-top: 1px solid;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hidden {
+        display: none;
+    }
 }

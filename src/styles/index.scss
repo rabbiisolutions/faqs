@@ -1,4 +1,27 @@
+$colors: (
+        aqua: #01FEFE, white: #FFFF, eggBlue: #01BBBB, electricViolet: #B200CD, electricVioletDull: #B412CD,
+        magenta: #DC00FE, mirage: #1B2531, dullMirage: rgba(27, 37, 49, 0.8), scorpion: #625E5D,
+        bluewood: #263246, vividViolet: #9F34AF, purple: #740186, grey: #CBC6C6, darkGrey: #A8A8A8,
+        bondiBlue: #00AEAE, blueStone: #006A6A, clairvoyant: #36043E, ripePlum: #5B0069,
+        persimmon: #FF7058, facebook: #3B5999, twitter: #1DA1F3, robinsEggBlue: #01d3d3
+);
+
+@function color($name) {
+    @return map_get($colors, $name);
+}
+
 $pointer: pointer;
+$navBarHeight: 4.25em;
+$webkitRadius : 10em;
+$borderRadius: 10em;
+$font24: 1em;
+$desktop: 840px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
 
 html {
     box-sizing: border-box;
@@ -12,8 +35,42 @@ body {
     display: grid;
     width: 100%;
 
+    .nav-bar {
+        background-color: color(mirage);
+        height: $navBarHeight;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        .logo {;
+            cursor: $pointer;
+        }
+
+        button {
+            -webkit-border-radius: $webkitRadius;
+            border-radius: $borderRadius;
+            background-color: inherit;
+            color: color(aqua);
+            border: 0.2em solid color(aqua);
+            padding: .5em 2em;
+            cursor: $pointer;
+            font-size: $font24;
+        }
+
+        .toggle span{
+            fill: color(robinsEggBlue);
+            cursor: $pointer;
+        }
+    }
+
     .faqs-view {
-        margin: 20% 5%;
+        margin: 5.5em 5%;
 
         .faqs-title {
             color: #B200CD;
@@ -22,7 +79,7 @@ body {
         }
 
         .tabs-view {
-            margin: 10% 3%;
+            margin: 5em 3%;
 
             .tabs {
                 background-color: aliceblue;
@@ -38,7 +95,7 @@ body {
             }
 
             .tabs-content {
-                margin: 5% 3%;
+                margin: 2.5em 3%;
 
                 .tab-content {
 
@@ -62,7 +119,269 @@ body {
         justify-content: space-between;
     }
 
-    .hidden {
-        display: none;
+    footer {
+        font-weight: bold;
+
+        #lighter {
+            background: color(bluewood);
+            padding: 15px 5px;
+            color: color(robinsEggBlue);
+            fill: color(robinsEggBlue);
+
+            @include desktop {
+                display: flex;
+                padding: 15px 75px;
+            }
+
+            .company-info {
+                display: none;
+                order: 1;
+
+                @include desktop {
+                    display: inline-block;
+                }
+            }
+
+            .find-us {
+                @include desktop {
+                    max-width: 400px;
+                }
+            }
+
+            #contacts-title, #find-us-title {
+                color: color(white);
+                text-align: center;
+                font-size: 1.125em;
+                margin: 15px 0;
+
+                @include desktop {
+                    text-align: left;
+                }
+            }
+
+            .contacts {
+                @include desktop {
+                    flex-direction: column;
+                    justify-content: start;
+                    order: 2;
+                    margin-left: 10em;
+                }
+            }
+
+            #contacts {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                @include desktop {
+                    flex-direction: column;
+                    justify-content: start;
+                }
+
+                #mobile, #mail {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+
+                    .icon-text {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        margin-bottom: 10px;
+                        align-items: center;
+                    }
+                }
+
+                #mobile {
+                    margin-right: 10px;
+
+                    @include desktop {
+                        margin-bottom: 40px;
+                    }
+                }
+            }
+
+            #social {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                @include desktop {
+                    justify-content: start;
+                }
+
+                a {
+                    color: color(robinsEggBlue);
+                }
+            }
+
+            .footer-icon {
+                margin-right: 10px;
+            }
+        }
+
+        #darken {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: .9em;
+            padding: 20px 5px;
+            background: color(mirage);
+
+            @include desktop {
+                font-size: 1.125em;
+            }
+
+            .copyright {
+                color: color(vividViolet);
+            }
+
+            .company {
+                color: color(magenta);
+            }
+        }
     }
+
+    .side-bar {
+        background-color: color(bluewood);
+        width: 63%;
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+        top: $navBarHeight;
+        right: 0;
+        position: fixed;
+        height: 100%;
+        padding: 10px 0;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+        .menu-title {
+            color: #A8A8A8;
+            font-size: 1.1em;
+            text-align: center;
+            display: block;
+        }
+
+        a.menu-item, .menu-sub-item {
+            display: block;
+            text-decoration: none;
+        }
+
+        .menu-sub-item {
+            color: #C0FFFF;
+            font-size: 1em;
+            padding: 15px 25px;
+        }
+
+        .menu-divider {
+            height: 2px;
+            color: #9A969B;
+            margin: 10px 30px;
+        }
+
+        .menu-item {
+            color: color(aqua);
+            padding: 20px 15px;
+            width: 100%;
+            cursor: $pointer;
+        }
+
+        .menu-item.active, .menu-sub-item.active, .menu-item:hover, .menu-sub-item:hover {
+            background-color: color(mirage);
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 90;
+}
+
+.sign-up-modal {
+    background-color: color(bluewood);
+    z-index: 1000;
+    position: fixed;
+    width: 90%;
+    top: 11%;
+    left: 3%;
+    height: auto;
+    padding: 20px 0;
+    border-radius: 5px;
+
+    .close-icon {
+        right: 10px;
+        top: 5px;
+        position: absolute;
+        color: white;
+        cursor: $pointer;
+    }
+
+    .sign-up-text {
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        color: color(darkGrey);
+        text-decoration: underline;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .user-title {
+        font-size: 1em;
+        color: color(white);
+        margin: 20px 0 20px 20px ;
+    }
+
+    hr {
+        border: 2px solid #9A969B;
+        margin: 10px 20px;
+    }
+
+    .clients-btn, .tutors-btn {
+        padding: .5em 1.5em;
+        display: inline-block;
+        box-shadow: 15px 25px 25px rgba(0, 0, 0, 0.25);
+        margin-left: 20px;
+        margin-bottom: 15px;
+        border: 0.2em solid;
+    }
+
+    .clients-btn {
+        background-color: color(magenta);
+        color: color(white);
+        border-color: color(mirage);
+        font-weight: bold;
+    }
+
+    .tutors-btn {
+        background-color: color(mirage);
+        color: color(magenta);
+        border-color: color(magenta);
+    }
+
+    .client-btns, .tutor-btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+}
+
+.btn-link {
+    -webkit-border-radius: $webkitRadius;
+    border-radius: $borderRadius;
+    cursor: $pointer;
+    box-shadow: 15px 25px 25px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
 }

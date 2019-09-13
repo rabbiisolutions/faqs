@@ -1,0 +1,12 @@
+html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Nunito", sans-serif;
+    display: grid;
+    width: 100%;
+}

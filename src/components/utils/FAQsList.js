@@ -1,5 +1,6 @@
 import accordion from "./accordion";
 import formatBody from "./faqBody";
+import React from "react";
 
 const FAQsList = (list) => {
 
@@ -7,9 +8,12 @@ const FAQsList = (list) => {
 
 const GenerateFAQ = (faq) => {
   return (
-    accordion.panel(
-        formatBody()
-    )
+      <div>
+        {accordion.toggle(faq.quiz)}
+        {accordion.panel(
+            formatBody(faq.answer)
+        )}
+      </div>
   );
 };
 

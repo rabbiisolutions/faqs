@@ -3,10 +3,16 @@ import FAQsList from "./utils/FAQsList";
 import tutorFAQs from "../constants/tutorFAQs";
 import clientFAQs from "../constants/clientFAQs";
 import handleTabs from "../eventHandlers/tabs";
+import texts from "../constants/texts";
 
 const FAQs = () => {
   return(
     <section className="faqs-view">
+      <div className="our-services hidden">
+        <a className="nav-sub-item" href="http://www.rabbii.co.ke/#teecha">
+          {texts.ourServices[0]}
+        </a>
+      </div>
       <div className="faqs-title">FAQs</div>
       <div className="tabs-view">
         <div className="tabs">

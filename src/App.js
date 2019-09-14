@@ -3,14 +3,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import FAQs from "./components/faqsView";
 import backDropHandler from "./eventHandlers/backDrop";
 import SideBar from "./components/mobile/sideBar";
-import MobileNavBar from "./components/mobile/navBar";
+import NavBar from "./components/mobile/navBar";
 import MobileFooter from "./components/mobile/footer";
 import SignUpModal from "./components/signUpModal";
 
 function App() {
   return (
       <Router>
-        <MobileNavBar/>
+        <NavBar/>
         <FAQs/>
         <SideBar/>
         <SignUpModal/>

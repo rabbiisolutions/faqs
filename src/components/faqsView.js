@@ -9,7 +9,7 @@ const FAQs = () => {
   return(
     <section className="faqs-view">
       <div className="our-services hidden">
-        <a className="nav-sub-item" href="http://www.rabbii.co.ke/#teecha">
+        <a className="nav-sub-item" href="https://www.rabbii.co.ke/#teecha">
           {texts.ourServices[0]}
         </a>
       </div>

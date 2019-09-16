@@ -48,10 +48,6 @@ body {
         justify-content: space-around;
         align-items: center;
 
-        @include desktop {
-            justify-content: space-evenly;
-        }
-
         .nav {
             display: none;
 

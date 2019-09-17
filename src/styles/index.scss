@@ -55,7 +55,7 @@ body {
                 display: inline-block;
                 text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
                 color: color(aqua);
-                padding: 20px 15px;
+                padding: 15px;
                 min-width: fit-content;
                 cursor: $pointer;
                 text-decoration: none;
@@ -134,39 +134,57 @@ body {
 
     .faqs-view {
         margin: 5.5em 5%;
+        //background-image: url("../images/questions.png");
+        //background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
 
         .faqs-title {
-            color: #770090;
+            color: color(magenta);
             font-weight: bold;
             font-size: 2.5em;
+            margin-left: 1em;
+
+            @include desktop {
+                margin-left: 2.5em;
+            }
         }
 
         .tabs-view {
             margin: 3em 3%;
 
             .tabs {
-                background-color: aliceblue;
+                //background-color: aliceblue;
                 display: flex;
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: center;
                 align-items: center;
-                padding: .7em 2em;
+
+                @include desktop {
+                    font-size: 1.3em;
+                }
+                //padding: .7em 2em;
 
                 .tab-link {
                     cursor: $pointer;
-                    padding: .5em 2.7em;
-                    border-radius: 10px;
-                    color: color(azure);
-                    margin-right: 10px;
-                    border: 2px solid white;
+                    padding: .7em 3em;
+                    //border-radius: 10px;
+                    color: black;
                     font-weight: bold;
+                    margin-right: 0;
+                    background-color: #820096;
+                    border: 2px solid black;
+                }
+
+                .tutors {
+                    border-right: 0;
                 }
 
                 .tab-link.active {
-                    background-color: color(azure);
+                    background-color: #B801D5;
                     color: color(white);
-                    border: none;
                 }
+
             }
 
             .tabs-content {
@@ -194,8 +212,8 @@ body {
         align-items: center;
         justify-content: space-between;
         font-weight: bold;
-        color: color(azure);
-        fill: color(azure);
+        //color: color(azure);
+        //fill: color(azure);
     }
 
     footer {

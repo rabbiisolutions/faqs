@@ -58,9 +58,11 @@ const tutorFAQs = {
     },
     {
       key: 28,
-      quiz: 'How can I be paid for being a home tutor?',
-      answer: ['Expert tutors are paid KES.600 per hour while professional tutors are paid KES. 900' +
-      ' per hour.', ]
+      quiz: 'How much do I get paid for having a home tuition job?',
+      answer: ['It depends on:', 'a) Your qualifications to teach in the area of interest.',
+        'b) Your number of years of experience teaching or practicing in the area of interest.',
+      'c) The clients financial capability.',
+      'You can earn from Ksh. 800 - Ksh. 2,100 per session.']
     },
     {
       key: 29,

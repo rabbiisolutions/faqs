@@ -67,8 +67,12 @@ const clientFAQs = {
     {
       key: 9,
       quiz: 'How much does it cost to get a home tutor?',
-      answer: ['The charges for home tutors are:', 'Experts: KES.800 per hour', 'Professionals: ' +
-      'KES. 1000 per hour']
+      answer: ['It depends on:', 'a) The number of years of experience the tutor you want has.',
+        ' b) The number of subjects your child needs tuition in.' ,
+        ' c) The number of sessions per subject your child will have.',
+      'The minimum no. of sessions for a subject is 4 for 1 or 2 subjects and 3 for more than 2' +
+      ' subjects.',
+      'The cost the total pay for the month is calculated and can be paid on a weekly or fortnight (2 weeks) or monthly basis.']
     }
   ]};
 

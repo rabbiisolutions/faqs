@@ -53,7 +53,7 @@ class NavBar extends React.Component {
             <a className="nav-item" href="#contacts" onClick={e => this.menuHandler(e)}>
               {texts.menuItems[4]}
             </a>
-            <a className="nav-item" href="https://www.rabbii.co.ke/#trending">
+            <a className="nav-item" href="https://trending.rabbii.co.ke/">
               {texts.menuItems[5]}
             </a>
         </span>

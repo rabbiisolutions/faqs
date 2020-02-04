@@ -18,11 +18,6 @@ class NavBar extends React.Component {
     };
   }
 
-  servicesToggle(e) {
-    //.classList.toggle('hidden');
-      overlayAction(document.getElementsByClassName('our-services')[0]);
-  };
-
   menuHandler(e) {
     const target = e.target;
     const navItems = document.getElementsByClassName('nav-item');
@@ -41,19 +36,19 @@ class NavBar extends React.Component {
             <a className="nav-item" href="https://www.rabbii.co.ke/">
               {texts.menuItems[0]}
             </a>
-            <span className="nav-item" onClick={e => this.servicesToggle(e)}>
+            <a className="nav-item" href={"https://payment.rabbii.co.ke"}>
               {texts.menuItems[1]}
-            </span>
-            <a className="nav-item" href="https://about.rabbii.co.ke/">
+            </a>
+            <a className="nav-item" href="https://tuition-jobs.rabbii.co.ke/">
               {texts.menuItems[2]}
             </a>
-            <a className="nav-item active" href="#" onClick={e => this.menuHandler(e)}>
+            <a className="nav-item" href="https://about.rabbii.co.ke">
               {texts.menuItems[3]}
             </a>
-            <a className="nav-item" href="#contacts" onClick={e => this.menuHandler(e)}>
+          <a className="nav-item" href="https://trending.rabbii.co.ke/">
               {texts.menuItems[4]}
             </a>
-            <a className="nav-item" href="https://trending.rabbii.co.ke/">
+            <a className="nav-item active" href="#" onClick={e => this.menuHandler(e)}>
               {texts.menuItems[5]}
             </a>
         </span>

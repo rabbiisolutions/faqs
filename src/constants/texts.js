@@ -6,7 +6,7 @@ const telkom = '0772 915 361';
 const sema = 'sema@rabbii.co.ke';
 const hr = 'hr@rabbii.co.ke';
 const menuTitle = 'Menu';
-const menuItems = ['Home', 'Our Services', 'About Us', 'FAQs', 'Contact Us', 'Trending'];
+const menuItems = ['Home', 'Payment', 'Become a Tutor', 'About Us', 'Trending', 'FAQs'];
 const ourServices = ['TeeCha'];
 const hidden = 'hidden';
 

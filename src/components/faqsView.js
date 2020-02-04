@@ -5,6 +5,26 @@ import clientFAQs from "../constants/clientFAQs";
 import handleTabs from "../eventHandlers/tabs";
 import texts from "../constants/texts";
 
+
+function readJSON(path) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', path, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function(e) {
+    if (this.status === 200) {
+      let file = new File([this.response], 'temp');
+      let fileReader = new FileReader();
+      fileReader.addEventListener('load', function(){
+        console.log(fileReader.result);
+      });
+      fileReader.readAsText(file);
+    }
+  };
+  xhr.send();
+}
+
+readJSON('file:///E:/Rabbi-TS/sept-oct/ClientFAQs.json');
+
 const FAQs = () => {
   return(
     <section className="faqs-view">

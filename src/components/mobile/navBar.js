@@ -6,7 +6,6 @@ import Button from "../utils/button";
 import texts from "../../constants/texts";
 import signUpHandler from "../../eventHandlers/signUpModal";
 import menuToggle from "../../eventHandlers/menuToggle";
-import overlayAction from "../../eventHandlers/overlayActions";
 
 
 class NavBar extends React.Component {
@@ -33,19 +32,19 @@ class NavBar extends React.Component {
       <div className="nav-bar">
         <Logo className="logo" height={2.5}/>
         <span className="nav">
-            <a className="nav-item" href="https://www.rabbii.co.ke/">
+            <a className="nav-item" href={texts.menuLinks[0]}>
               {texts.menuItems[0]}
             </a>
-            <a className="nav-item" href={"https://payment.rabbii.co.ke"}>
+            <a className="nav-item" href={texts.menuLinks[1]}>
               {texts.menuItems[1]}
             </a>
-            <a className="nav-item" href="https://tuition-jobs.rabbii.co.ke/">
+            <a className="nav-item" href={texts.menuLinks[2]}>
               {texts.menuItems[2]}
             </a>
-            <a className="nav-item" href="https://about.rabbii.co.ke">
+            <a className="nav-item" href={texts.menuLinks[3]}>
               {texts.menuItems[3]}
             </a>
-          <a className="nav-item" href="https://trending.rabbii.co.ke/">
+          <a className="nav-item" href={texts.menuLinks[4]}>
               {texts.menuItems[4]}
             </a>
             <a className="nav-item active" href="#" onClick={e => this.menuHandler(e)}>

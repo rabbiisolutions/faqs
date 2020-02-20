@@ -8,7 +8,7 @@ $colors: (
     @return map_get($colors, $name);
 }
 
-$desktop: 800px;
+$desktop: 768px;
 $monitor: 1024px;
 
 @mixin desktop {

@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import backDropHandler from "./events/backdrop";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+import NavPane from "./components/NavPane";
 import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
 
@@ -10,6 +11,10 @@ function App() {
   return (
       <Router>
         <NavBar/>
+        <NavPane/>
+        <main>
+
+        </main>
         <SideBar/>
         <SignUpModal/>
         <div className="page-mask hidden" onClick={e => backDropHandler(e)} />

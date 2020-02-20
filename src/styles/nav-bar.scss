@@ -34,20 +34,72 @@ $desktop: 800px;
     }
 }
 
-#nav-bar {
-    background-color: color(alabaster);
+%navs {
     height: $navBarHeight;
     width: 100%;
     position: fixed;
-    top: 0;
     right: 0;
     left: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
     z-index: 50;
-    //box-shadow: 0 2px 4px rgba(27, 37, 49, 0.25);
+}
+
+%items {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 0;
+    min-width: fit-content;
+    cursor: $pointer;
+    color: color(mirage);
+    height: available;
+    font-weight: 300;
+    .text {
+        margin: 5px .625vw 0;
+    }
+
+    .active {
+        background-color: color(curiosBlue);
+        height: 5px;
+        margin-top: 9px;
+    }
+}
+
+%active {
+    color: color(deepSeaGreen);
+    font-weight: bold;
+}
+
+#nav-pane {
+    @extend %navs;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 11vw;
+    @include desktop {
+        padding-left: 18vw;
+    }
+
+    .pane-item {
+        @extend %items;
+        margin: 2vw;
+        @include desktop {
+            margin: 0 .75vw;
+        }
+        .active.hide {
+            background-color: #ffffff;
+        }
+    }
+    .pane-item.active {
+        @extend %active;
+    }
+}
+
+#nav-bar {
+    @extend %navs;
+    background-color: color(alabaster);
+    top: 0;
+    justify-content: space-around;
 
     .logo {
         display: inline-block; // can't apply max width without inline-block or block
@@ -62,28 +114,11 @@ $desktop: 800px;
 
     .nav {
         display: none;
-        font-weight: 300;
 
         .nav-item {
-            display: flex;
-            flex-direction: column;
-            padding: 15px 0 0;
-            min-width: fit-content;
-            cursor: $pointer;
             text-decoration: none;
-            color: color(mirage);
+            @extend %items;
             margin: 0 .4375vw;
-            height: available;
-
-            .text {
-                margin: 5px .625vw 0;
-            }
-
-            .active {
-                background-color: color(curiosBlue);
-                height: 5px;
-                margin-top: 9px;
-            }
         }
 
         .nav-item:hover {
@@ -94,17 +129,15 @@ $desktop: 800px;
         .nav-item.active:hover {
             text-shadow: none;
         }
+        .nav-item.active {
+            @extend %active;
+        }
     }
 
     @include desktop {
         .nav {
             display: flex;
             justify-content: space-evenly;
-        }
-
-        .nav-item.active {
-            color: color(deepSeaGreen);
-            font-weight: bold;
         }
     }
 

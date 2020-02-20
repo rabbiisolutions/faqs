@@ -1,6 +1,6 @@
-import overlayAction from "./overlayActions";
+import overlayAction from "./overlays";
 
-const menuToggle = evt => {
+const menuToggle = () => {
   const sideBar = document.getElementsByClassName('menu')[0];
   overlayAction(sideBar);
 };

@@ -1,0 +1,71 @@
+$colors: (
+    // navBar
+        mirage: #1B2531,
+    // content
+        deepSeaGreen: #0B4B68,
+        mirage64: rgba(27, 37, 49, 0.64),
+        mirage25: rgba(27, 37, 49, 0.25), gallery: #ECECEC,
+    // borders and accordion
+        concrete: #F3F3F3
+);
+
+@function color($name) {
+    @return map_get($colors, $name);
+}
+
+$navBarHeight: 3.5em;
+
+.side-bar {
+    background-color: color(concrete);
+    width: 63%;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    top: $navBarHeight;
+    right: 0;
+    position: fixed;
+    height: 100%;
+    padding: 10px 0;
+
+    .menu-title {
+        color: color(mirage64);
+        font-size: 3vw;
+        text-align: center;
+        display: block;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid color(mirage25);
+        font-weight: 300;
+    }
+
+    a.menu-item, .menu-sub-item {
+        display: block;
+        text-decoration: none;
+    }
+
+    .menu-item {
+        color: color(mirage);
+        //padding: 20px 15px;
+        width: 100%;
+        cursor: pointer;
+        font-weight: 300;
+        font-size: 4vw;
+
+        .text {
+            padding: 20px 15px;
+            display: inline-block;
+        }
+
+        .activated {
+            background-color: #27A1DA;
+            height: 100%;
+        }
+    }
+
+    .menu-item.active, .menu-sub-item.active, .menu-item:hover, .menu-sub-item:hover {
+        font-weight: bold;
+        color: color(deepSeaGreen);
+        font-size: 4.5vw;
+        text-shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
+        background-color: color(gallery);
+    }
+}

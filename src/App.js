@@ -1,21 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import FAQs from "./components/faqsView";
-import backDropHandler from "./eventHandlers/backDrop";
-import SideBar from "./components/mobile/sideBar";
-import NavBar from "./components/mobile/navBar";
-import MobileFooter from "./components/mobile/footer";
-import SignUpModal from "./components/signUpModal";
+import backDropHandler from "./events/backdrop";
+import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
+import Footer from "./components/Footer";
+import SignUpModal from "./components/SignUpModal";
 
 function App() {
   return (
       <Router>
         <NavBar/>
-        <FAQs/>
         <SideBar/>
         <SignUpModal/>
         <div className="page-mask hidden" onClick={e => backDropHandler(e)} />
-        <MobileFooter/>
+        <Footer/>
       </Router>
   );
 }

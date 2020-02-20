@@ -1,0 +1,277 @@
+$colors: (
+    // navBar
+        alabaster: #FAFAFA, mirage: #1B2531, purple: #A600C0,
+        curiosBlue: #27A1DA,
+    // content
+        deepSeaGreen: #0B4B68, deepSeaGreen56: rgba(11, 75, 104, 0.56),
+        mirage80: rgba(27, 37, 49, 0.8), mirage90: rgba(27, 37, 49, 0.9),
+        mirage64: rgba(27, 37, 49, 0.64),mirage74: rgba(27, 37, 49, 0.74),
+        mirage25: rgba(27, 37, 49, 0.25), gallery: #ECECEC, robinsEggBlue: #00C3F0,
+        black: #000000,
+    // borders and accordion
+        silverSand: #BDBFC3, concrete: #F3F3F3, mercury: #E2E2E2,
+    // footer
+        nobel: #B7B7B7,
+    // space
+        white: #FFFFFF
+);
+
+@function color($name) {
+    @return map_get($colors, $name);
+}
+$pointer: pointer;
+$navBarHeight: 3.5em;
+$webkitRadius : 10em;
+$borderRadius: 10em;
+$font16: 1em;
+
+$tablet: 450px;
+$desktop: 768px;
+$monitor: 1192px;
+
+@mixin tablet {
+    @media (min-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin monitor {
+    @media (min-width: #{$monitor}) {
+        @content;
+    }
+}
+
+%buttons {
+    -webkit-border-radius: $webkitRadius;
+    border-radius: $borderRadius;
+    cursor: $pointer;
+    border-style: solid;
+}
+
+%transition {
+    transition: all .5s ease-in-out;
+}
+
+%hover {
+    background-color: color(white);
+    color: color(curiosBlue);
+    transition: all .5s ease-in-out;
+}
+
+html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Nunito", sans-serif;
+    width: 100%;
+    color: color(mirage);
+}
+
+a {
+    text-decoration: none;
+    color: color(mirage);
+    &:hover {
+        text-decoration: underline;
+        color: color(curiosBlue);
+    }
+}
+
+button:hover, .social span svg:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.page-mask {
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+}
+
+main {
+    margin-top: $navBarHeight;
+    display: block;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 5vw;
+    text-align: center;
+
+    @include desktop {
+        font-size: 2.5vw;
+    }
+
+    @include monitor {
+        font-size: 2.5vw;
+    }
+}
+
+button {
+    @extend %buttons;
+    border-color: #0071A5;
+    background-color: #0071A5;
+    color: color(white);
+    border-width: 1px;
+    @include desktop {
+        border-width: 2px;
+        font-weight: normal;
+        padding: .6em 1.5em;
+    }
+    padding: .4em 1.5em;
+    font-size: $font16;
+    margin: 8px 0;
+    &:focus {
+        outline: 0 !important;
+    }
+    &:hover {
+        background-color: color(white);
+        color: #0071A5;
+        transition: all .5s ease-in-out;
+    }
+}
+
+.btn-link:hover {
+    transition: all .5s ease-in-out;
+    box-shadow: 0 4px 4px rgba(27, 37, 49, 0.13);
+}
+
+.btn-link {
+    @extend %buttons;
+    text-decoration: none;
+    font-size: 1.25vw;
+    display: inline-block;
+    border-style: solid;
+    text-align: center;
+}
+
+%sign-up {
+    padding: .7rem 1.2rem;
+    border-width: 1px;
+    font-size: .9em;
+    margin: 3vw 4vw 1.25vw;
+    @include desktop {
+        margin: .75vw 2vw 1.25vw;
+    }
+}
+
+.client-btn {
+    @extend %sign-up;
+}
+
+.tutor-btn {
+    @extend %sign-up;
+}
+
+.services {
+    padding: .5rem 1.5rem;
+    font-size: 1.25rem;
+}
+
+.info {
+    font-weight: 300;
+    font-size: .8em;
+    text-align: center;
+    color: rgba(27, 37, 49, 0.7);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#desktop-view {
+    display: none;
+    @include desktop {
+        display: block;
+        .section-title {
+            margin-bottom: 0;
+        }
+
+        .section-desc {
+            margin-top: .5vw;
+        }
+    }
+}
+
+.collapse-toggle {
+    color: color(deepSeaGreen);
+    background-color: color(alabaster);
+    border: 1px solid color(silverSand);
+    padding: 3vw 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-size: 4.25vw;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.collapse-toggle.shown {
+    color: color(curiosBlue);
+    cursor: pointer;
+    border-color: color(curiosBlue);
+}
+
+#accordion-lead, .refer-text {
+    color: color(mirage80);
+    font-size: 3vw;
+    text-align: center;
+    font-weight: 300;
+    margin: 1.5em;
+}
+
+.accordion {
+    margin-top: 1.5rem;
+    padding: 1.5vw 3vw;
+    justify-content: center;
+    text-align: center;
+    @include desktop {
+        display: none;
+    }
+    .section-desc {
+        display: none;
+        @include desktop {
+            display: block;
+        }
+    }
+}
+
+.section-desc {
+    font-weight: 300;
+    text-align: center;
+    font-size: 4vw;
+    @include desktop {
+        font-size: 1.5vw;
+    }
+    @include monitor {
+        font-size: 1.25vw;
+    }
+}
+
+.collapse-content {
+    width: 96%;
+    margin: 1vw auto 0;
+    padding: .5vw 0 3vw;
+    background-color: color(alabaster);
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+

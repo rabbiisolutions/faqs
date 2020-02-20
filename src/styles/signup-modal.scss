@@ -1,0 +1,151 @@
+$colors: (
+    // content
+        mirage64: rgba(27, 37, 49, 0.64),
+);
+
+@function color($name) {
+    @return map_get($colors, $name);
+}
+
+$desktop: 768px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+$monitor: 1024px;
+
+@mixin monitor {
+    @media (min-width: #{$monitor}) {
+        @content;
+    }
+}
+
+$hd: 1330px;
+
+@mixin hd {
+    @media (min-width: #{$hd}) {
+        @content;
+    }
+}
+
+.sign-up.modal {
+    background-color: white;
+    z-index: 1000;
+    width: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(100% - 100px);
+    border-radius: 5px;
+    text-align: center;
+
+    @include desktop {
+        width: 70%;
+    }
+
+    @include monitor {
+        width: 60%;
+    }
+    @include hd {
+        width: 50%;
+    }
+
+    %p {
+        background-color: #FAFAFA;
+        padding: 2vh;
+    }
+
+    .header {
+        @extend %p;
+        border-radius: 5px 5px 0 0;
+    }
+    .footer {
+        @extend %p;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .close-icon {
+        right: 10px;
+        top: 5px;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    #sign-up-text {
+        font-weight: bold;
+        margin: 1vw 0 2vw;
+        @include desktop {
+            margin: 1vw 0;
+            font-size: 1.5rem;
+        }
+        font-size: 1.25rem;
+    }
+
+    .user-title {
+        font-size: .9em;
+        margin: 2vw 0 3vw 3vh;
+        text-transform: capitalize;
+        font-weight: 600;
+        text-align: left;
+        color: rgba(27, 37, 49, 0.74);
+        @include desktop {
+            font-size: 1.0125em;
+            margin: 0 0 2vw 7vw;
+        }
+        @include monitor {
+            margin-left: 5vw;
+            margin-bottom: 1.5vw;
+        }
+    }
+
+    .content {
+        padding: 2vh 1vh 4vh;
+        @include desktop {
+            padding: 4vh 0;
+        }
+        &:nth-child(1) {
+            border-bottom: 1px solid #eeeeee;
+        }
+    }
+
+    .btn-link {
+        border-color: #0071A5;
+        color: #0071A5;
+        background-color: color(white);
+        font-weight: bold;
+        font-size: 1rem;
+        &:hover {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #0071A5;
+        }
+    }
+
+    %group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #client-btns {
+        @extend %group;
+        @include desktop {
+            margin-left: 4vw;
+        }
+        @include monitor {
+            margin-left: 3vw;
+        }
+    }
+
+    #tutor-btns {
+        @extend %group;
+        @include desktop {
+            justify-content: space-evenly;
+        }
+        flex-wrap: wrap;
+    }
+}

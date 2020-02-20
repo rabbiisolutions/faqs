@@ -16,12 +16,12 @@ const changeIcon = (toggle) => {
   toggle.childNodes[2].classList.toggle(hidden); // up icon
 };
 
-const collapseHandler = evt => {
+const sectionCollapseHandler = evt => {
   let element = evt.target;
   const elemClass = element.classList[0];
-  if (elemClass !== "section-toggle") {
+  if (elemClass !== "collapse-toggle") {
     // the click element came from from icon or title span
-    if (elemClass === "section-title"){
+    if (elemClass === "collapse-title"){
       element = element.parentNode; // set element to parent of span/icon
     }
     else if (elemClass === "down") {
@@ -52,7 +52,16 @@ const collapseHandler = evt => {
     lastSection = current; // lastNode equal to current element
   }
   toggle(current);
-  //element.scrollIntoView();
+  try { // scroll in to view of current clicked element
+    element.parentNode.scrollIntoView();
+  } catch (e) {
+    element.parentNode.scrollIntoView();
+    /*try {
+      element.parentNode.previousElementSibling.scrollIntoView();
+    } catch (e) {
+      element.parentNode.parentNode.previousElementSibling.scrollIntoView();
+    }*/
+  }
 };
 
-export default collapseHandler;
+export default sectionCollapseHandler;

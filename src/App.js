@@ -6,6 +6,7 @@ import SideBar from "./components/SideBar";
 import NavPane from "./components/NavPane";
 import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <NavBar/>
         <NavPane/>
         <main>
-
+          <SearchBox/>
         </main>
         <SideBar/>
         <SignUpModal/>

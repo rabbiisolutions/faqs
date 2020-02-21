@@ -46,7 +46,7 @@ footer {
             margin-bottom: inherit;
         }
         @include monitor {
-            font-size: 1.125rem;
+            font-size: 1rem;
         }
     }
 
@@ -63,7 +63,7 @@ footer {
     }
     @include monitor {
         a {
-            font-size: 1.125rem;
+            font-size: .9rem;
         }
     }
 }

@@ -1,0 +1,125 @@
+$colors: (
+    // navBar
+        alabaster: #FAFAFA, mirage: #1B2531, purple: #A600C0,
+        curiosBlue: #27A1DA,
+    // content
+        deepSeaGreen: #0B4B68, deepSeaGreen56: rgba(11, 75, 104, 0.56),
+        mirage80: rgba(27, 37, 49, 0.8), mirage90: rgba(27, 37, 49, 0.9),
+        mirage64: rgba(27, 37, 49, 0.64),mirage74: rgba(27, 37, 49, 0.74),
+        mirage25: rgba(27, 37, 49, 0.25), gallery: #ECECEC, robinsEggBlue: #00C3F0,
+        black: #000000,
+    // borders and accordion
+        silverSand: #BDBFC3, concrete: #F3F3F3, mercury: #E2E2E2,
+    // footer
+        nobel: #B7B7B7,
+    // space
+        white: #FFFFFF
+);
+
+@function color($name) {
+    @return map_get($colors, $name);
+}
+
+$tablet: 450px;
+$desktop: 768px;
+$monitor: 1192px;
+
+@mixin tablet {
+    @media (min-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin monitor {
+    @media (min-width: #{$monitor}) {
+        @content;
+    }
+}
+
+.collapse-toggle {
+    color: color(curiosBlue);
+    background-color: color(white);
+    border-bottom: 1px solid #E5E5E5;
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    //justify-content: space-between;
+    //border-radius: 10px;
+    font-size: 6vw;
+    text-transform: capitalize;
+    //margin-bottom: 5px;
+    .collapse-title {
+        margin-left: 6vw;
+    }
+}
+
+.collapse-toggle.shown {
+    //color: color(curiosBlue);
+    cursor: pointer;
+    //border-color: color(curiosBlue);
+    border-bottom: none;
+}
+
+#accordion-lead, .refer-text {
+    color: color(mirage80);
+    font-size: 3vw;
+    text-align: center;
+    font-weight: 300;
+    margin: 1.5em;
+}
+
+.accordion {
+    margin: 1.5rem 0 2rem;
+    padding: 1.5vw 3vw;
+    justify-content: center;
+    //text-align: center;
+    @include desktop {
+        display: none;
+    }
+    .section-desc {
+        display: none;
+        @include desktop {
+            display: block;
+        }
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+.section-desc {
+    font-weight: 300;
+    text-align: center;
+    font-size: 4vw;
+    @include desktop {
+        font-size: 1.5vw;
+    }
+    @include monitor {
+        font-size: 1.25vw;
+    }
+}
+
+.collapse-content {
+    width: 96%;
+    margin: 1vw auto 0;
+    padding: .5vw 0 3vw;
+    background-color: color(alabaster);
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    p {
+        margin-left: 20vw;
+        &:hover {
+            text-decoration: underline;
+            color: color(curiosBlue);
+        }
+    }
+}

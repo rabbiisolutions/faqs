@@ -7,6 +7,7 @@ import NavPane from "./components/NavPane";
 import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
 import SearchBox from "./components/SearchBox";
+import Main from "./components/Main";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <NavPane/>
         <main>
           <SearchBox/>
+          <Main/>
         </main>
         <SideBar/>
         <SignUpModal/>

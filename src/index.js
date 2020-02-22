@@ -6,6 +6,8 @@ import './styles/side-bar.css';
 import './styles/footer.css';
 import './styles/signup-modal.css';
 import './styles/search-box.css';
+import './styles/collapse.css';
+import './styles/answer-view.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

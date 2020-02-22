@@ -159,6 +159,11 @@ $desktop: 800px;
         }
     }
 
+    button {
+        background-color: #0071A5;
+        color: color(white);
+    }
+
     .toggle span svg:hover {
         transform: scale(1.1);
     }

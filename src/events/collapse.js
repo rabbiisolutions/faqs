@@ -12,8 +12,8 @@ const toggle = (panel) => {
 
 const changeIcon = (toggle) => {
   const hidden = 'hidden';
-  toggle.childNodes[1].classList.toggle(hidden); // down icon
-  toggle.childNodes[2].classList.toggle(hidden); // up icon
+  toggle.childNodes[0].classList.toggle(hidden); // down icon
+  toggle.childNodes[1].classList.toggle(hidden); // up icon
 };
 
 const sectionCollapseHandler = evt => {
@@ -37,8 +37,7 @@ const sectionCollapseHandler = evt => {
       element = element.parentNode.parentNode.parentNode; // set element to parent of parent of span/icon
     }
   }
-  //console.log(elemClass);
-  //element.classList.toggle("shown");
+
   let current = element.nextElementSibling;
   if (lastSection && lastSection !== current) {
     // if lastNode is not null AND the lastNode is not equal to current element
@@ -53,14 +52,9 @@ const sectionCollapseHandler = evt => {
   }
   toggle(current);
   try { // scroll in to view of current clicked element
-    element.parentNode.scrollIntoView();
+    element.previousElementSibling.scrollIntoView();
   } catch (e) {
-    element.parentNode.scrollIntoView();
-    /*try {
-      element.parentNode.previousElementSibling.scrollIntoView();
-    } catch (e) {
-      element.parentNode.parentNode.previousElementSibling.scrollIntoView();
-    }*/
+    element.previousElementSibling.scrollIntoView();
   }
 };
 

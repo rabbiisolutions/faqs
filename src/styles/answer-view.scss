@@ -1,0 +1,18 @@
+.answer-view {
+    padding: 2vh 6vw;
+    p, li {
+        font-weight: 300;
+    }
+}
+
+.home-div {
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4vh 0;
+    button {
+        background-color: #ffffff;
+        color: #0071A5;
+    }
+}

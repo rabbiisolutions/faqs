@@ -25,7 +25,7 @@ class SearchBox extends React.Component {
 
   render() {
     return(
-      <section id={'search-box'}>
+      <section id={'search-box'} className={'search-box'}>
         <div id={'search-title'}>Hello, how can we help you?</div>
         {this.Input()}
         <div id={'search-lead'}>You can also browse the topics below to find what you are looking for.</div>

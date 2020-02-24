@@ -44,8 +44,14 @@ class MobileView extends React.Component {
   render() {
     return(
         <section className={'accordion'}>
-          <h3>{texts.faqs}</h3>
-          {faqsList.map((collapse) => (this.FaqView(collapse)))}
+          <div className={'client-view'}>
+            <h3>{texts.faqsC}</h3>
+            {faqsList.map((collapse) => (this.FaqView(collapse)))}
+          </div>
+          <div className={'tutor-view hidden'}>
+            <h3>{texts.faqsT}</h3>
+            {faqsList.map((collapse) => (this.FaqView(collapse)))}
+          </div>
         </section>
     )
   }

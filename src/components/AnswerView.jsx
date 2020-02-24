@@ -15,7 +15,6 @@ class AnswerView extends React.Component {
   }
 
   AnswerContent = () => {
-    //console.log(this.state.active);
     if (this.state.active) {
       return (
           <Router>
@@ -38,9 +37,8 @@ class AnswerView extends React.Component {
     )
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Any time props.email changes, update state.
-    //console.log(this.props.title);
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Any time props.title changes, update state.
     if (nextProps.title !== this.props.title) {
       this.setState({
         text: nextProps.text,

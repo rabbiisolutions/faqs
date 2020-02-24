@@ -1,0 +1,21 @@
+#desktop-view {
+    width: 50%;
+    margin: 0 auto;
+    .categories {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .category-view {
+        width: 33%;
+        h3 {
+            color: #27A1DA;
+        }
+        p {
+            &:hover {
+                text-decoration: underline;
+                color: #27A1DA;
+                cursor: pointer;
+            }
+        }
+    }
+}

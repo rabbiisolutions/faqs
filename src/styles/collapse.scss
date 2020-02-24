@@ -49,20 +49,15 @@ $monitor: 1192px;
     padding: 0 5vw;
     display: flex;
     align-items: center;
-    //justify-content: space-between;
-    //border-radius: 10px;
     font-size: 6vw;
     text-transform: capitalize;
-    //margin-bottom: 5px;
     .collapse-title {
         margin-left: 6vw;
     }
 }
 
 .collapse-toggle.shown {
-    //color: color(curiosBlue);
     cursor: pointer;
-    //border-color: color(curiosBlue);
     border-bottom: none;
 }
 
@@ -78,7 +73,6 @@ $monitor: 1192px;
     margin: 1.5rem 0 2rem;
     padding: 1.5vw 3vw;
     justify-content: center;
-    //text-align: center;
     @include desktop {
         display: none;
     }

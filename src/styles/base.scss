@@ -197,12 +197,5 @@ button {
     display: none;
     @include desktop {
         display: block;
-        .section-title {
-            margin-bottom: 0;
-        }
-
-        .section-desc {
-            margin-top: .5vw;
-        }
     }
 }

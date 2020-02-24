@@ -10,17 +10,11 @@ class NavPane extends React.Component {
   }
 
   changeContent = (evt) => {
-    // handle pane change
-    toggles.toggleHiddenByClass(['client-view', 'tutor-view']);
-    // hide answer view
-    toggles.toggleHiddenByClassWithStatus([
-      {name: 'answer-view', checkHidden: false}, {name: 'accordion', checkHidden: true}
-    ]);
+    // this function changes the users view depending on the pane selected
     let selected = evt.target;
     const elemClass = selected.classList[0];
-
     if (elemClass !== "pane-item") {
-      // the click child element
+      // the click is from child element
       if (elemClass === "text" || elemClass === "active") {
         selected = selected.parentNode; // set element to parent of text or active
       }
@@ -28,12 +22,19 @@ class NavPane extends React.Component {
     // we need to know the previous active element
     let prior = selected.nextElementSibling; // it can be the next
     if (prior === null) prior = selected.previousElementSibling; // or previous sibling
-    // deactivated the previously active pill, activate the selected pill
+    // deactivate the previously active pill, activate the selected pill
     this.changeActivePill([prior, selected]);
+    // handle pane change, show relative view
+    toggles.toggleAllHiddenByClass(['client-view', 'tutor-view']);
+    // hide answer view, show accordion or desktop and search box
+    toggles.toggleHiddenByClassWithStatus([
+      {name: 'answer-view', hasHiddenClass: false}, {name: 'accordion', hasHiddenClass: true},
+      {name: 'desktop', hasHiddenClass: true}, {name: 'search-box', hasHiddenClass: true}
+    ]);
   };
 
   changeActivePill = (targets) => {
-    // toggle active and hide classes on the pane
+    // toggle active and hide classes on a pane item
     targets.forEach((target) => {
       target.classList.toggle('active');
       target.childNodes[1].classList.toggle('hide');

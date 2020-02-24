@@ -34,6 +34,14 @@ $desktop: 800px;
     }
 }
 
+$menu: 900px;
+
+@mixin menu {
+    @media (min-width: #{$menu}) {
+        @content;
+    }
+}
+
 %navs {
     height: $navBarHeight;
     width: 100%;
@@ -135,7 +143,7 @@ $desktop: 800px;
         }
     }
 
-    @include desktop {
+    @include menu {
         .nav {
             display: flex;
             justify-content: space-evenly;
@@ -147,7 +155,7 @@ $desktop: 800px;
         justify-content: flex-end;
         width: 50px;
         padding: 0 3vw;
-        @include desktop {
+        @include menu {
             display: none;
         }
         span svg{

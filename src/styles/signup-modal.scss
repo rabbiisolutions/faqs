@@ -7,6 +7,14 @@ $colors: (
     @return map_get($colors, $name);
 }
 
+$tab: 450px;
+
+@mixin tab {
+    @media (min-width: #{$tab}) {
+        @content;
+    }
+}
+
 $desktop: 768px;
 
 @mixin desktop {
@@ -42,16 +50,17 @@ $hd: 1330px;
     max-height: calc(100% - 100px);
     border-radius: 5px;
     text-align: center;
-
-    @include desktop {
+    @include tab {
         width: 70%;
     }
-
+    @include desktop {
+        width: 50%;
+    }
     @include monitor {
-        width: 60%;
+        width: 40%;
     }
     @include hd {
-        width: 50%;
+        width: 30%;
     }
 
     %p {
@@ -131,7 +140,7 @@ $hd: 1330px;
         align-items: center;
     }
 
-    #client-btns {
+    #client-btns, #tutor-btns {
         @extend %group;
         @include desktop {
             margin-left: 4vw;
@@ -139,13 +148,5 @@ $hd: 1330px;
         @include monitor {
             margin-left: 3vw;
         }
-    }
-
-    #tutor-btns {
-        @extend %group;
-        @include desktop {
-            justify-content: space-evenly;
-        }
-        flex-wrap: wrap;
     }
 }

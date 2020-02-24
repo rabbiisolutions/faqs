@@ -26,9 +26,7 @@ const SignUpModal = () => {
               teachers/tutors only
             </div>
             <div id="tutor-btns">
-              <ButtonLink link="https://forms.gle/LerPUYib9EJ3yMxr7" className="tutor-btn" value="Non TSC Tutor"/>
               <ButtonLink link="https://forms.gle/ZU8GZrYVPWenL4r19" className="tutor-btn" value="TSC Tutor"/>
-              <ButtonLink link="https://forms.gle/CmgUyZCWrnLgsqnC9" className="tutor-btn" value="Skills Tutor"/>
             </div>
           </div>
         </section>

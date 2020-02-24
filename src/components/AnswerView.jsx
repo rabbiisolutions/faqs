@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router } from 'react-router-dom';
 import Button from "./basic/Button";
+import Icon from "./basic/Icon";
+import arrow from "../assets/icons/breadcrumb.svg"
 
 class AnswerView extends React.Component {
   constructor(props) {
@@ -29,6 +31,11 @@ class AnswerView extends React.Component {
   render() {
     return(
         <section className={'answer-view hidden'}>
+          <div id={'breadcrumb'}>
+            <span>Category</span>
+            <Icon src={arrow} height={'auto'} width={'auto'} units={''} className={'arrow'}/>
+            <span>Question Item</span>
+          </div>
           {this.AnswerContent()}
           <div className={'home-div'}>
             <Button value={'FAQs Home'} className={'faqs-home'} onClick={e => this.props.showAnswer()}/>

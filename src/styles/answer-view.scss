@@ -1,7 +1,50 @@
+$desktop: 768px;
+$monitor: 1024px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin monitor {
+    @media (min-width: #{$monitor}) {
+        @content;
+    }
+}
+
 .answer-view {
     padding: 2vh 6vw;
+    @include desktop {
+        margin: 0 auto;
+        width: 70%;
+    }
+    @include monitor {
+        width: 55%;
+    }
     p, li {
         font-weight: 300;
+        @include desktop {
+
+        }
+        @include monitor {
+            margin: 1vw 0;
+        }
+    }
+    p {
+        line-height: 150%;
+    }
+}
+
+#breadcrumb {
+    border-bottom: 1px solid #E5E5E5;
+    display: flex;
+    //align-items: center;
+    color: #ACA9A9;
+    padding: .75vw 0;
+    margin-bottom: 2vw;
+    span {
+        margin-right: 10px;
     }
 }
 
@@ -11,6 +54,7 @@
     justify-content: center;
     align-items: center;
     padding: 4vh 0;
+    margin-top: 4vw;
     button {
         background-color: #ffffff;
         color: #0071A5;

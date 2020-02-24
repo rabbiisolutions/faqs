@@ -1,11 +1,33 @@
+$desktop: 768px;
+$monitor: 1024px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin monitor {
+    @media (min-width: #{$monitor}) {
+        @content;
+    }
+}
+
 #desktop-view {
-    width: 50%;
+    @include desktop {
+        width: 70%;
+    }
+
+    @include monitor {
+        width: 55%;
+    }
     margin: 0 auto;
     .categories {
         display: flex;
         flex-wrap: wrap;
     }
     .category-view {
+        // gonna have to add margin right
         width: 33%;
         h3 {
             color: #27A1DA;

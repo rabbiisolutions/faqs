@@ -18,7 +18,7 @@ class MobileView extends React.Component {
   Content = (links) => {
     return (
         <div className="collapse-content">
-          {links.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer('key')}>{link.value}</p>))}
+          {links.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, 'key')}>{link.value}</p>))}
         </div>
     )
   };

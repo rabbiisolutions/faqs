@@ -14,7 +14,7 @@ class DesktopView extends React.Component {
     return(
         <div key={collapse.key} className={'category-view'}>
           <h3>{collapse.category}</h3>
-            {collapse.list.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer('key')}>{link.value}</p>))}
+            {collapse.list.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, 'key')}>{link.value}</p>))}
         </div>
     )
   };

@@ -14,10 +14,12 @@ class Main extends React.Component {
       text: props.text,
       list: props.list,
       title: props.title,
+      category: props.category,
+      itemName: props.itemName
     }
   }
 
-  showAnswer = (key) => {
+  showAnswer = (evt, key) => {
     // shows the answer view
     if (key) // action came from answer link
       this.toggleItems(false);
@@ -30,6 +32,7 @@ class Main extends React.Component {
       title: q1.title,
     });
     toggles.toggleHiddenByClass(['answer-view']);
+    if (evt) this.updateBreadcrumb(evt.target);
   };
 
   toggleItems = (status) => {
@@ -39,11 +42,32 @@ class Main extends React.Component {
     ]);
   };
 
+  updateBreadcrumb = (target) => {
+    const parentNode = target.parentNode;
+    const parentClass = parentNode.classList[0];
+    const nodeText = target.textContent;
+    let categoryText = '';
+    if (parentClass === 'collapse-content') {
+      // collapsed view (mobile)
+      categoryText = parentNode.previousElementSibling.childNodes[2].textContent;
+    } else if (parentClass === 'category-view') {
+      // categories listing (desktop)
+      categoryText = parentNode.childNodes[0].textContent;
+    }
+    this.setState({
+      category: categoryText,
+      itemName: nodeText
+    });
+  };
+
   render() {
     return(
         <Router>
           <MobileView showAnswer={this.showAnswer}/>
-          <AnswerView showAnswer={this.showAnswer} answerShown={this.state.answerShown} title={this.state.title} text={this.state.text} list={this.state.list}/>
+          <AnswerView showAnswer={this.showAnswer} answerShown={this.state.answerShown}
+                      title={this.state.title} text={this.state.text} list={this.state.list}
+                      category={this.state.category} itemName={this.state.itemName}
+          />
           <DesktopView showAnswer={this.showAnswer}/>
         </Router>
     )

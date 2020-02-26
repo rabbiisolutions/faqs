@@ -6,24 +6,25 @@ import SideBar from "./components/SideBar";
 import NavPane from "./components/NavPane";
 import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
-import SearchBox from "./components/SearchBox";
 import Main from "./components/Main";
 
-function App() {
+
+const App = () => {
   return (
       <Router>
-        <NavBar/>
-        <NavPane/>
-        <main>
-          <SearchBox/>
-          <Main/>
-        </main>
-        <SideBar/>
-        <SignUpModal/>
-        <div className="page-mask hidden" onClick={e => backDropHandler(e)} />
-        <Footer/>
+        <div>
+          <NavBar/>
+          <NavPane/>
+          <main>
+            <Main/>
+          </main>
+          <SideBar/>
+          <SignUpModal/>
+          <div className="page-mask hidden" onClick={e => backDropHandler(e)} />
+          <Footer/>
+        </div>
       </Router>
   );
-}
+};
 
 export default App;

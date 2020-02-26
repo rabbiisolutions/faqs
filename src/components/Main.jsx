@@ -5,6 +5,7 @@ import DesktopView from "./Desktop";
 import { BrowserRouter as Router } from 'react-router-dom';
 import q1 from "../constants/answers";
 import toggles from "../utils/toggles";
+import SearchBox from "./SearchBox";
 
 class Main extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Main extends React.Component {
     }
   }
 
-  showAnswer = (evt, key) => {
+  showAnswer = (evt, key, result) => {
     // shows the answer view
     if (key) // action came from answer link
       this.toggleItems(false);
@@ -32,7 +33,24 @@ class Main extends React.Component {
       title: q1.title,
     });
     toggles.toggleHiddenByClass(['answer-view']);
-    if (evt) this.updateBreadcrumb(evt.target);
+    if (evt) {
+      let target = evt.target; // clicked element
+      if (result) {
+        // click came from live result item, navigate to target text (h3)
+        let tagName = target.tagName;
+        console.log(tagName);
+        if (tagName === 'H5') {
+          target = target.nextElementSibling; // click from [h5]
+        }
+        else if (tagName === 'P') {
+          target = target.previousElementSibling; // click from [p]
+        }
+        else if (tagName === 'DIV') {
+          target = target.childNodes[1]; // click from [parent result item div]
+        }
+      }
+      this.updateBreadcrumb(target);
+    }
   };
 
   toggleItems = (status) => {
@@ -50,8 +68,8 @@ class Main extends React.Component {
     if (parentClass === 'collapse-content') {
       // collapsed view (mobile)
       categoryText = parentNode.previousElementSibling.childNodes[2].textContent;
-    } else if (parentClass === 'category-view') {
-      // categories listing (desktop)
+    } else if (parentClass === 'category-view' || parentClass === 'live-result') {
+      // categories listing (desktop) or  live result item
       categoryText = parentNode.childNodes[0].textContent;
     }
     this.setState({
@@ -63,6 +81,7 @@ class Main extends React.Component {
   render() {
     return(
         <Router>
+          <SearchBox showAnswer={this.showAnswer}/>
           <MobileView showAnswer={this.showAnswer}/>
           <AnswerView showAnswer={this.showAnswer} answerShown={this.state.answerShown}
                       title={this.state.title} text={this.state.text} list={this.state.list}

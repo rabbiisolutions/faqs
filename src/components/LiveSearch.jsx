@@ -25,7 +25,7 @@ class LiveSearch extends React.Component {
     )
   };
 
-  results = () => {
+  Results = () => {
     if (this.state.results) {
       return(
           this.state.results.map((resultItem) => (
@@ -38,7 +38,7 @@ class LiveSearch extends React.Component {
   render() {
     return (
         <div className={'live-search hidden'}>
-          {this.results()}
+          {this.Results()}
         </div>
     )
   }

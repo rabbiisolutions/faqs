@@ -55,7 +55,7 @@ class Main extends React.Component {
 
   toggleItems = (status) => {
     toggles.toggleHiddenByClassWithStatus([
-      {name: 'search-box', hasHiddenClass: status}, {name: 'accordion', hasHiddenClass: status},
+      {name: 'accordion', hasHiddenClass: status},
       {name: 'desktop', hasHiddenClass: status}
     ]);
   };

@@ -11,21 +11,23 @@ class SearchBox extends React.Component {
     this.state = {
       input: null,
       results: [],
-      showAnswer: props.showAnswer
+      showAnswer: props.showAnswer,
+      quizKeys: [],
     }
   }
 
   onType = (evt) => {
     // to make sure the any body click hide doesn't get appended, clear results
-    //console.log(document.getElementsByClassName('live-search')[0].classList[1]);
     if (document.getElementsByClassName('live-search')[0].classList[1] === 'hidden') {
-      this.setState({results: []});
+      this.setState({results: [], quizKeys: []});
     }
     let textInput = evt.target.value.toLowerCase(); // get value from search box
     // only search if value is > 2 chars
     if (textInput.length > 2) {
       // iterate thru the FAQs list
       let count = 0;
+      let matchedList = [];
+      let quizKeys  = [];
       faqsList.forEach((faq)=> (
         faq.list.forEach((item) => {
           let status = false; // stores whether the text was matched or not
@@ -46,17 +48,20 @@ class SearchBox extends React.Component {
             if (status) {
               count = count + 1;
               let text = item.answer.text[0].value;
+              let quizKey = item.key;
               // clip the text length if greater than 120 characters
               text = (text.length > 120) ? text[120] : text;
-              let matched = [{ category: faq.category, title: title, text: text, key: 'r' + count}];
-                if (!Boolean(this.state.results.length) || this.state.results[0].title !== 'No results') {
+              let matched = {category: faq.category, title: title, text: text, key: 'r' + count};
+                if (!Boolean(matchedList.length) || this.state.results[0].title !== 'No results') {
                   // concatenate if only the no result isn't shown
-                  this.setState({
-                    results: this.state.results.concat(matched)
-                  })
+                  // and the item doesn't exist in matched list already
+                  if (!quizKeys.includes(quizKey))
+                    matchedList.push(matched);
+                    quizKeys.push(quizKey);
                 } else  {
                   // otherwise, reset the list and add the matched answer
-                  this.setState({results: matched});
+                  matchedList = [matched,];
+                  quizKeys = [quizKey,];
                 }
             }
 
@@ -69,6 +74,8 @@ class SearchBox extends React.Component {
         this.setState({
           results: [{title: 'No results', text: 'Please check your spelling and try again', key: 'r' + count}]
         })
+      } else {
+        this.setState({results: matchedList, quizKeys: quizKeys});
       }
       // show the live search div and the result mask
       toggles.toggleHiddenByClassWithStatus(
@@ -79,7 +86,7 @@ class SearchBox extends React.Component {
       // hide the live search div and the result mask
       this.hideResults();
       // reset the results div
-      this.setState({results: []});
+      this.setState({results: [], quizKeys: []});
     }
   };
 
@@ -95,7 +102,7 @@ class SearchBox extends React.Component {
     return(
         <div id={'search-group'}>
           <Icon src={search} height={3} width={3} units={'vh'} className={'search-icon'}/>
-          <input type={'search'} name={'search'} id={'search'} onChange={e => this.onType(e)} onBlur={e => this.onType(e)} placeholder={'Type keywords to find answers'}/>
+          <input type={'search'} name={'search'} id={'search'} onChange={e => this.onType(e)} placeholder={'Type keywords to find answers'}/>
         </div>
     )
   };

@@ -14,10 +14,11 @@ $monitor: 1024px;
 }
 
 .answer-view {
-    padding: 2vh 6vw;
+    padding: 0 6vw 2vh;
     @include desktop {
         margin: 0 auto;
         width: 70%;
+        padding: 1vh 6vw 2vh;
     }
     @include monitor {
         width: 55%;

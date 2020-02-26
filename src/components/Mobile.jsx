@@ -1,8 +1,8 @@
 import React from "react";
 import texts from "../constants/texts";
 import sectionCollapseHandler from "../events/collapse";
-import active from "../assets/icons/inactive.svg";
-import inactive from "../assets/icons/active.svg";
+import active from "../assets/icons/up.svg";
+import inactive from "../assets/icons/down.svg";
 import Icon from "./basic/Icon";
 import faqsList from "../constants/faqs";
 import { BrowserRouter as Router } from 'react-router-dom';

@@ -50,6 +50,7 @@ $hd: 1330px;
     max-height: calc(100% - 100px);
     border-radius: 5px;
     text-align: center;
+
     @include tab {
         width: 70%;
     }

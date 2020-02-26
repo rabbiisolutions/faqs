@@ -19,7 +19,7 @@ class SearchBox extends React.Component {
   onType = (evt) => {
     // to make sure the any body click hide doesn't get appended, clear results
     if (document.getElementsByClassName('live-search')[0].classList[1] === 'hidden') {
-      this.setState({results: [], quizKeys: []});
+      this.clearResults();
     }
     let textInput = evt.target.value.toLowerCase(); // get value from search box
     // only search if value is > 2 chars
@@ -52,12 +52,16 @@ class SearchBox extends React.Component {
               // clip the text length if greater than 120 characters
               text = (text.length > 120) ? text[120] : text;
               let matched = {category: faq.category, title: title, text: text, key: 'r' + count};
-                if (!Boolean(matchedList.length) || this.state.results[0].title !== 'No results') {
+              //console.log(this.state.results[0].title);
+                if (!Boolean(matchedList.length)
+                    || (matchedList[0] !== undefined
+                        && matchedList[0].title !== 'No results')) {
                   // concatenate if only the no result isn't shown
                   // and the item doesn't exist in matched list already
-                  if (!quizKeys.includes(quizKey))
+                  if (!quizKeys.includes(quizKey)) {
                     matchedList.push(matched);
                     quizKeys.push(quizKey);
+                  }
                 } else  {
                   // otherwise, reset the list and add the matched answer
                   matchedList = [matched,];
@@ -75,6 +79,7 @@ class SearchBox extends React.Component {
           results: [{title: 'No results', text: 'Please check your spelling and try again', key: 'r' + count}]
         })
       } else {
+        //console.log(quizKeys);
         this.setState({results: matchedList, quizKeys: quizKeys});
       }
       // show the live search div and the result mask
@@ -86,7 +91,7 @@ class SearchBox extends React.Component {
       // hide the live search div and the result mask
       this.hideResults();
       // reset the results div
-      this.setState({results: [], quizKeys: []});
+      this.clearResults();
     }
   };
 
@@ -96,6 +101,10 @@ class SearchBox extends React.Component {
         [{name: 'live-search', hasHiddenClass: false},
           {name: 'result-mask', hasHiddenClass: false}]
     );
+  };
+
+  clearResults = () => {
+    this.setState({results: [], quizKeys: []});
   };
 
   Input = () => {

@@ -6,6 +6,7 @@ import SideBar from "./components/SideBar";
 import NavPane from "./components/NavPane";
 import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
+import TutorForms from "./components/TutorForms";
 import Main from "./components/Main";
 
 
@@ -20,6 +21,7 @@ const App = () => {
           </main>
           <SideBar/>
           <SignUpModal/>
+          <TutorForms/>
           <div className="page-mask hidden" onClick={e => backDropHandler(e)} />
           <Footer/>
         </div>

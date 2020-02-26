@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonLink from "./basic/ButtonLink.jsx";
-import signUpHandler from "../events/sign-up-modal";
+import Button from "./basic/Button";
+import modals from "../events/modals";
 import texts from "../constants/texts";
 import close from "../assets/icons/close.svg";
 import Icon from "./basic/Icon";
@@ -9,7 +10,7 @@ const SignUpModal = () => {
   return (
       <div className={'sign-up modal hidden'}>
         <section className={'header'}>
-          <Icon src={close} className="close-icon" height={2.25} width={5} onClick={e => signUpHandler(e)}/>
+          <Icon src={close} className="close-icon" height={2.25} width={5} onClick={e => modals.signUpHandler(e)}/>
           <div id="sign-up-text">{texts.signUp}</div>
         </section>
         <section className={'body'}>
@@ -26,7 +27,7 @@ const SignUpModal = () => {
               teachers/tutors only
             </div>
             <div id="tutor-btns">
-              <ButtonLink link="https://forms.gle/ZU8GZrYVPWenL4r19" className="tutor-btn" value="TSC Tutor"/>
+              <Button className="tutor-btn" value="Become a Tutor" onClick={e => modals.tutorForms(e)}/>
             </div>
           </div>
         </section>

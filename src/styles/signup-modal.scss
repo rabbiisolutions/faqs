@@ -39,17 +39,149 @@ $hd: 1330px;
     }
 }
 
-.sign-up.modal {
+%modals {
     background-color: white;
     z-index: 1000;
-    width: 90%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: calc(100% - 100px);
-    border-radius: 5px;
     text-align: center;
+    @include desktop {
+        top: 35%;
+    }
+    @include monitor {
+        top: 50%;
+    }
+}
+%header {
+    font-weight: bold;
+    margin: 1vw 0 2vw;
+    @include desktop {
+        margin: 1vw 0;
+        font-size: 1.5rem;
+    }
+    font-size: 1.25rem;
+}
+
+%p {
+    background-color: #FAFAFA;
+}
+
+%headers {
+    @extend %p;
+    border-radius: 5px 5px 0 0;
+}
+
+%footers {
+    @extend %p;
+    border-radius: 0 0 5px 5px;
+}
+%close {
+    right: 10px;
+    top: 5px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#tutor-forms {
+    @extend %modals;
+    border-radius: 10px;
+    width: 90%;
+    .body {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2vw 0 1vw;
+        overflow-y: scroll;
+        max-height: 50vh;
+        @include desktop {
+            max-height: 100%;
+            padding: 1.5vw 1vw 1vw;
+            overflow-y: hidden;
+        }
+    }
+    .close-icon {
+        @extend %close;
+    }
+
+    .header {
+        @extend %headers;
+        padding: 5px;
+        @include desktop {
+            padding: 2vh;
+        }
+    }
+    .footer {
+        @extend %footers;
+        padding: 5px;
+        @include desktop {
+            padding: 2vh;
+        }
+    }
+
+    @include desktop {
+        width: 90%;
+    }
+    @include monitor {
+        width: 70%;
+    }
+    a {
+        display: block;
+    }
+
+    .area-link {
+        padding: 4vw 0;
+        margin: 0 auto 2vw;
+        font-size: 4vw;
+        color: #4a6577;
+        border: 1px solid #C4C4C4;
+        border-radius: 10px;
+        width: 80%;
+        @include desktop {
+            font-size: 1rem;
+            padding: 1.5vw 0;
+            margin-bottom: 2.5vh;
+            width: 40%;
+        }
+        @include monitor {
+            width: 40%;
+            padding: .75vw 0;
+            margin-bottom: 3vh;
+        }
+        &:hover {
+            text-decoration: none;
+            color: white;
+            background-color: #0071A5;
+            transition: all .5s ease-in-out;
+            box-shadow: 0 4px 4px rgba(27, 37, 49, 0.13);
+        }
+    }
+    .area-link:nth-of-type(9) {
+        margin-bottom: 0;
+    }
+
+    .learn {
+        font-weight: 300;
+        font-size: .9em;
+        margin: 4vh 3vw 4vh 0;
+        @include desktop {
+            margin: 2vh 3vw 2vh 0;
+        }
+        text-align: right;
+    }
+
+    h4 {
+        @extend %header;
+        font-weight: 300;
+    }
+}
+
+
+.sign-up.modal {
+    @extend %modals;
+    width: 90%;
+    border-radius: 5px;
+    max-height: calc(100% - 100px);
 
     @include tab {
         width: 70%;
@@ -64,35 +196,21 @@ $hd: 1330px;
         width: 30%;
     }
 
-    %p {
-        background-color: #FAFAFA;
+    .header {
+        @extend %headers;
+        padding: 2vh;
+    }
+    .footer {
+        @extend %footers;
         padding: 2vh;
     }
 
-    .header {
-        @extend %p;
-        border-radius: 5px 5px 0 0;
-    }
-    .footer {
-        @extend %p;
-        border-radius: 0 0 5px 5px;
-    }
-
     .close-icon {
-        right: 10px;
-        top: 5px;
-        position: absolute;
-        cursor: pointer;
+        @extend %close;
     }
 
     #sign-up-text {
-        font-weight: bold;
-        margin: 1vw 0 2vw;
-        @include desktop {
-            margin: 1vw 0;
-            font-size: 1.5rem;
-        }
-        font-size: 1.25rem;
+        @extend %header;
     }
 
     .user-title {
@@ -115,6 +233,9 @@ $hd: 1330px;
     .content {
         padding: 2vh 1vh 4vh;
         @include desktop {
+            padding: 2vh 0;
+        }
+        @include monitor {
             padding: 4vh 0;
         }
         &:nth-child(1) {
@@ -122,17 +243,22 @@ $hd: 1330px;
         }
     }
 
-    .btn-link {
+    .btn-link, button {
         border-color: #0071A5;
         color: #0071A5;
-        background-color: color(white);
+        background-color: #FFFFFF;
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 1rem !important;
         &:hover {
             text-decoration: none;
             color: #ffffff;
             background-color: #0071A5;
         }
+    }
+
+    button {
+        transition: none !important;
+        transform: none !important;
     }
 
     %group {

@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "./basic/Icon";
 import toggle from "../assets/icons/harmbuger.svg"
 import texts from "../constants/texts";
-import signUpHandler from "../events/sign-up-modal";
+import modals from "../events/modals";
 import menuToggle from "../events/menu-toggle";
 import logo from "../assets/icons/logo.svg";
 
@@ -53,7 +53,7 @@ class NavBar extends React.Component {
               <span className={'active hidden'}>&nbsp;</span>
             </a>
         </span>
-          <Button value={texts.signUp} onClick={e => signUpHandler(e)}/>
+          <Button value={texts.signUp} onClick={e => modals.signUpHandler(e)}/>
           <Icon src={toggle} className="toggle" height={2.25} width={5} onClick={e => menuToggle(e)}/>
         </nav>
     );

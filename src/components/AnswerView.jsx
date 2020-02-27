@@ -41,7 +41,7 @@ class AnswerView extends React.Component {
     )
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps, nextContent) {
     // Any time props.title changes, update state.
     if (nextProps.title !== this.props.title) {
       this.setState({

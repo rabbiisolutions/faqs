@@ -43,7 +43,7 @@ class LiveSearch extends React.Component {
     )
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps, nextContent) {
     this.setState({
       results: nextProps.results
     });

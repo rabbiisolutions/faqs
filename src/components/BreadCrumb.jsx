@@ -20,7 +20,7 @@ class BreadCrumb extends React.Component {
     )
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps, nextContent) {
     // update breadcrumb
     this.setState({
       category: nextProps.category,

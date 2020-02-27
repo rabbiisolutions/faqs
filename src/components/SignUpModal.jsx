@@ -8,7 +8,7 @@ import Icon from "./basic/Icon";
 
 const SignUpModal = () => {
   return (
-      <div className={'sign-up modal hidden'}>
+      <div className={'sign-up-modal hidden'}>
         <section className={'header'}>
           <Icon src={close} className="close-icon" height={2.25} width={5} onClick={e => modals.signUpHandler(e)}/>
           <div id="sign-up-text">{texts.signUp}</div>
@@ -27,7 +27,7 @@ const SignUpModal = () => {
               teachers/tutors only
             </div>
             <div id="tutor-btns">
-              <Button className="tutor-btn" value="Become a Tutor" onClick={e => modals.tutorForms(e)}/>
+              <Button className="tutor-btn" value="Become a Tutor" onClick={e => modals.tutorForms(true)}/>
             </div>
           </div>
         </section>

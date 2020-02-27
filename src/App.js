@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import backDropHandler from "./events/backdrop";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
@@ -8,11 +7,12 @@ import Footer from "./components/Footer";
 import SignUpModal from "./components/SignUpModal";
 import TutorForms from "./components/TutorForms";
 import Main from "./components/Main";
+import { CookiesProvider } from 'react-cookie';
 
 
 const App = () => {
   return (
-      <Router>
+      <CookiesProvider>
         <div>
           <NavBar/>
           <NavPane/>
@@ -25,7 +25,7 @@ const App = () => {
           <div className="page-mask hidden" onClick={e => backDropHandler(e)} />
           <Footer/>
         </div>
-      </Router>
+      </CookiesProvider>
   );
 };
 

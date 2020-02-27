@@ -164,8 +164,9 @@ $monitor: 1024px;
     .toggle {
         display: flex;
         justify-content: flex-end;
-        width: 50px;
-        padding: 0 3vw;
+        width: 6vh;
+        line-height: 15px;
+        padding: 0 8px 0 0;
         @include menu {
             display: none;
         }
@@ -175,6 +176,30 @@ $monitor: 1024px;
         span{
             fill: color(mirage);
             cursor: $pointer;
+        }
+    }
+
+    .pulse {
+        background-color: #EEEEEE;
+        border-radius: 50%;
+        transform: scale(1);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+        }
+
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
         }
     }
 

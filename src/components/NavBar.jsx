@@ -3,8 +3,10 @@ import Icon from "./basic/Icon";
 import toggle from "../assets/icons/harmbuger.svg"
 import texts from "../constants/texts";
 import modals from "../events/modals";
-import menuToggle from "../events/menu-toggle";
 import logo from "../assets/icons/logo.svg";
+import {useCookies} from "react-cookie";
+import menuToggle from "../events/menu-toggle";
+import Button from "./basic/Button";
 
 const Logo = (props) => {
   return (
@@ -14,13 +16,21 @@ const Logo = (props) => {
   );
 };
 
-const Button = (props) => {
+function Toggle() {
+  // fetch cookies object, set toggled variable (class)
+  const [cookies, setCookie] = useCookies(['toggled']);
+  let toggled = cookies['toggled'] ? '' : 'pulse';
+
+  function toggleHandler () {
+    menuToggle();
+    // set toggled true if not already true
+    if (!cookies['toggled']) setCookie('toggled', true, { path: '/' });
+  }
+
   return (
-      <button type="button" className={props.className} onClick={props.onClick}>
-        {props.value}
-      </button>
-  );
-};
+      <Icon src={toggle} className={"toggle " + toggled} height={5.5} width={5} units={'vh'} onClick={e => toggleHandler(e)}/>
+  )
+}
 
 class NavBar extends React.Component {
   render() {
@@ -54,7 +64,7 @@ class NavBar extends React.Component {
             </a>
         </span>
           <Button value={texts.signUp} onClick={e => modals.signUpHandler(e)}/>
-          <Icon src={toggle} className="toggle" height={2.25} width={5} onClick={e => menuToggle(e)}/>
+          <Toggle/>
         </nav>
     );
   }

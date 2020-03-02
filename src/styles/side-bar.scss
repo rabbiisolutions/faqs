@@ -37,14 +37,13 @@ $navBarHeight: 3.5em;
         font-weight: 300;
     }
 
-    a.menu-item, .menu-sub-item {
+    a.menu-item {
         display: block;
         text-decoration: none;
     }
 
     .menu-item {
         color: color(mirage);
-        //padding: 20px 15px;
         width: 100%;
         cursor: pointer;
         font-weight: 300;
@@ -61,7 +60,7 @@ $navBarHeight: 3.5em;
         }
     }
 
-    .menu-item.active, .menu-sub-item.active, .menu-item:hover, .menu-sub-item:hover {
+    .menu-item.active, .menu-item:hover {
         font-weight: bold;
         color: color(deepSeaGreen);
         font-size: 4.5vw;

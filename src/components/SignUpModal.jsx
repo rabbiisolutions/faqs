@@ -1,6 +1,5 @@
 import React from "react";
 import ButtonLink from "./basic/ButtonLink.jsx";
-import Button from "./basic/Button";
 import modals from "../events/modals";
 import texts from "../constants/texts";
 import close from "../assets/icons/close.svg";
@@ -27,7 +26,7 @@ const SignUpModal = () => {
               teachers/tutors only
             </div>
             <div id="tutor-btns">
-              <Button className="tutor-btn" value="Become a Tutor" onClick={e => modals.tutorForms(true)}/>
+              <ButtonLink className="tutor-btn" value="Become a Tutor" link="https://tutor.rabbii.co.ke"/>
             </div>
           </div>
         </section>

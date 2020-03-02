@@ -22,17 +22,24 @@ class Main extends React.Component {
 
   showAnswer = (evt, key, result) => {
     // shows the answer view
-    if (key) // action came from answer link
+    let status;
+    if (key) {// action came from answer link
       this.toggleItems(false);
-     else // action came from back to home button
+      status = true;
+    }
+     else {
+      // action came from back to home button
       this.toggleItems(true);
+      status = false;
+    }
     this.setState({
-      answerShown: !this.state.answerShown,
+      answerShown: status,
       text: q1.text,
       list: q1.list,
       title: q1.title,
     });
-    toggles.toggleHiddenByClass(['answer-view']);
+     // hide the element
+    toggles.toggleHiddenByClassWithStatus([{name: 'answer-view', hasHiddenClass: status}]);
     if (evt) {
       let target = evt.target; // clicked element
       if (result) {
@@ -48,6 +55,7 @@ class Main extends React.Component {
         else if (tagName === 'DIV') {
           target = target.childNodes[1]; // click from [parent result item div]
         }
+        this.hideResults(); // hide live results on result item click to show answer view
       }
       this.updateBreadcrumb(target);
     }
@@ -78,10 +86,18 @@ class Main extends React.Component {
     });
   };
 
+  hideResults = () => {
+    // hide the live search div and the result mask
+    toggles.toggleHiddenByClassWithStatus(
+        [{name: 'live-search', hasHiddenClass: false},
+          {name: 'result-mask', hasHiddenClass: false}]
+    );
+  };
+
   render() {
     return(
         <Router>
-          <SearchBox showAnswer={this.showAnswer}/>
+          <SearchBox showAnswer={this.showAnswer} hideResults={this.hideResults}/>
           <MobileView showAnswer={this.showAnswer}/>
           <AnswerView showAnswer={this.showAnswer} answerShown={this.state.answerShown}
                       title={this.state.title} text={this.state.text} list={this.state.list}

@@ -13,6 +13,7 @@ class SearchBox extends React.Component {
       results: [],
       showAnswer: props.showAnswer,
       quizKeys: [],
+      hideResults: props.hideResults
     }
   }
 
@@ -89,19 +90,19 @@ class SearchBox extends React.Component {
       );
     } else {
       // hide the live search div and the result mask
-      this.hideResults();
+      this.state.hideResults();
       // reset the results div
       this.clearResults();
     }
   };
 
-  hideResults = () => {
+  /*hideResults = () => {
     // hide the live search div and the result mask
     toggles.toggleHiddenByClassWithStatus(
         [{name: 'live-search', hasHiddenClass: false},
           {name: 'result-mask', hasHiddenClass: false}]
     );
-  };
+  };*/
 
   clearResults = () => {
     this.setState({results: [], quizKeys: []});
@@ -122,7 +123,7 @@ class SearchBox extends React.Component {
         <div id={'search-title'}>Hello, how can we help you?</div>
         {this.Input()}
         <LiveSearch results={this.state.results} showAnswer={this.state.showAnswer}/>
-        <div className="result-mask hidden" onClick={e => this.hideResults(e)}/>
+        <div className="result-mask hidden" onClick={e => this.state.hideResults(e)}/>
         <div id={'search-lead'}>You can also browse the topics below to find what you are looking for.</div>
       </section>
     );

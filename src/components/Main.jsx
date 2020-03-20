@@ -3,9 +3,9 @@ import MobileView from "./Mobile";
 import AnswerView from "./AnswerView";
 import DesktopView from "./Desktop";
 import { BrowserRouter as Router } from 'react-router-dom';
-import q1 from "../constants/answers";
 import toggles from "../utils/toggles";
 import SearchBox from "./SearchBox";
+import faqsList from "../constants/faqs";
 
 class Main extends React.Component {
   constructor(props) {
@@ -20,12 +20,28 @@ class Main extends React.Component {
     }
   }
 
+  searchAnswer = key => {
+    Object.values(faqsList).map((user)=> (
+        user.forEach(faq => {
+          faq.list.forEach(item => {
+            if (item.answer.key === key) {
+              this.setState({
+                text: item.answer.text,
+                list: item.answer.list,
+                title: item.answer.title,
+              })
+            }
+          })
+        })));
+  };
+
   showAnswer = (evt, key, result) => {
     // shows the answer view
     let status;
     if (key) {// action came from answer link
       this.toggleItems(false);
       status = true;
+      this.searchAnswer(key);
     }
      else {
       // action came from back to home button
@@ -33,10 +49,7 @@ class Main extends React.Component {
       status = false;
     }
     this.setState({
-      answerShown: status,
-      text: q1.text,
-      list: q1.list,
-      title: q1.title,
+      answerShown: status
     });
      // hide the element
     toggles.toggleHiddenByClassWithStatus([{name: 'answer-view', hasHiddenClass: status}]);

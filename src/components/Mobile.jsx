@@ -18,7 +18,7 @@ class MobileView extends React.Component {
   Content = (links) => {
     return (
         <div className="collapse-content">
-          {links.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, 'key')}>{link.value}</p>))}
+          {links.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, link.answer.key)}>{link.answer.title}</p>))}
         </div>
     )
   };
@@ -46,11 +46,11 @@ class MobileView extends React.Component {
         <section className={'accordion'}>
           <div className={'client-view'}>
             <h3>{texts.faqsC}</h3>
-            {faqsList.map((collapse) => (this.FaqView(collapse)))}
+            {faqsList.clientFaqs.map((collapse) => (this.FaqView(collapse)))}
           </div>
           <div className={'tutor-view hidden'}>
             <h3>{texts.faqsT}</h3>
-            {faqsList.map((collapse) => (this.FaqView(collapse)))}
+            {faqsList.tutorFaqs.map((collapse) => (this.FaqView(collapse)))}
           </div>
         </section>
     )

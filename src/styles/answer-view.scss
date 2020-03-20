@@ -23,6 +23,9 @@ $monitor: 1024px;
     @include monitor {
         width: 55%;
     }
+    h3 {
+        color: #27A1DA;
+    }
     p, li {
         font-weight: 300;
         @include desktop {

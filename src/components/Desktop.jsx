@@ -14,7 +14,7 @@ class DesktopView extends React.Component {
     return(
         <div key={collapse.key} className={'category-view'}>
           <h3>{collapse.category}</h3>
-            {collapse.list.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, 'key')}>{link.value}</p>))}
+            {collapse.list.map((link) => (<p className={'faq-link'} key={link.key} onClick={e => this.props.showAnswer(e, link.answer.key)}>{link.answer.title}</p>))}
         </div>
     )
   };
@@ -24,13 +24,13 @@ class DesktopView extends React.Component {
           <div className={'client-view'}>
             <h3>{texts.faqsC}</h3>
             <div className={'categories'}>
-              {faqsList.map((collapse) => (this.CategoryView(collapse)))}
+              {faqsList.clientFaqs.map((collapse) => (this.CategoryView(collapse)))}
             </div>
           </div>
           <div className={'tutor-view hidden'}>
             <h3>{texts.faqsT}</h3>
             <div className={'categories'}>
-              {faqsList.map((collapse) => (this.CategoryView(collapse)))}
+              {faqsList.tutorFaqs.map((collapse) => (this.CategoryView(collapse)))}
             </div>
           </div>
         </section>

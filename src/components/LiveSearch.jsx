@@ -17,7 +17,7 @@ class LiveSearch extends React.Component {
   SearchResult = (props) => {
     return (
         <div className={'live-result'} key={props.key}
-             onClick={props.category ? e => this.props.showAnswer(e, 'key', true) :  e => this.noResult(e)}>
+             onClick={props.category ? e => this.props.showAnswer(e, props.quizKey, true) :  e => this.noResult(e)}>
           <h5>{props.category}</h5>
           <h3>{props.title}</h3>
           <p>{props.text}</p>

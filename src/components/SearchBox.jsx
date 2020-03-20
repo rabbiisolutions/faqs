@@ -5,6 +5,10 @@ import faqsList from "../constants/faqs";
 import toggles from "../utils/toggles";
 import LiveSearch from "./LiveSearch";
 
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +33,9 @@ class SearchBox extends React.Component {
       let count = 0;
       let matchedList = [];
       let quizKeys  = [];
-      faqsList.forEach((faq)=> (
+
+      Object.values(faqsList).forEach((user)=> (
+          user.forEach(faq => {
         faq.list.forEach((item) => {
           let status = false; // stores whether the text was matched or not
 
@@ -49,11 +55,20 @@ class SearchBox extends React.Component {
             if (status) {
               count = count + 1;
               let text = item.answer.text[0].value;
-              let quizKey = item.key;
+              let quizKey = item.answer.key;
+              let category = getKeyByValue(faqsList,user);
+              let lastIndex;
+              if (category === 'tutorFaqs') {
+                lastIndex = 5;
+              }
+              else if (category === 'clientFaqs') {
+                lastIndex = 6;
+              }
+              let currentUser = category.charAt(0).toUpperCase() + category.slice(1, lastIndex);
+              //console.log(category.charAt(0).toUpperCase() + category.slice(1, lastIndex));
               // clip the text length if greater than 120 characters
-              text = (text.length > 120) ? text[120] : text;
-              let matched = {category: faq.category, title: title, text: text, key: 'r' + count};
-              //console.log(this.state.results[0].title);
+              text = text.length > 120 ? text.substring(0, 120) : text;
+              let matched = {category: currentUser + ' -> '+ faq.category, title: title, text: text + '...', key: 'r' + count, quizKey: quizKey};
                 if (!Boolean(matchedList.length)
                     || (matchedList[0] !== undefined
                         && matchedList[0].title !== 'No results')) {
@@ -73,8 +88,8 @@ class SearchBox extends React.Component {
           } catch (e) {
             // nothing to do
           }
-        })
-      ));
+        })}
+      )));
       if (count === 0) { // no match found
         this.setState({
           results: [{title: 'No results', text: 'Please check your spelling and try again', key: 'r' + count}]
@@ -95,14 +110,6 @@ class SearchBox extends React.Component {
       this.clearResults();
     }
   };
-
-  /*hideResults = () => {
-    // hide the live search div and the result mask
-    toggles.toggleHiddenByClassWithStatus(
-        [{name: 'live-search', hasHiddenClass: false},
-          {name: 'result-mask', hasHiddenClass: false}]
-    );
-  };*/
 
   clearResults = () => {
     this.setState({results: [], quizKeys: []});

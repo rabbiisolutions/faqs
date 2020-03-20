@@ -1,20 +1,41 @@
-import q1 from "./answers";
+import answers from "./answers";
 
-const faqsList = [
-  {key: 'f1', category: 'Category', list: [
-      {key: 'faq1', value: 'Question Item List', answer: q1},
-      {key: 'faq2', value: 'Question Item List', answer: q1},
-      {key: 'faq3', value: 'Question Item List', answer: null},
-      {key: 'faq4', value: 'Question Item List', answer: null}]},
-  {key: 'f2', category: 'Category', list: [{
-      key: 'faq11', value: 'Question Item List'}, {key: 'faq12', value: 'Question Item List'},
-      {key: 'faq13', value: 'Question Item List'}, {key: 'faq14', value: 'Question Item List'}]},
-  {key: 'f3', category: 'Category', list: [{
-      key: 'faq112', value: 'Question Item List'}, {key: 'faq113', value: 'Question Item List'},
-      {key: 'faq114', value: 'Question Item List'}, {key: 'faq115', value: 'Question Item List'}]},
-  {key: 'f4', category: 'Category', list: [{
-      key: 'faq1111', value: 'Question Item List'}, {key: 'faq1112', value: 'Question Item List'},
-      {key: 'faq1113', value: 'Question Item List'}, {key: 'faq1115', value: 'Question Item List'}]},
+const categories = ['Pricing and Payment', 'Sessions', 'About Us'];
+
+const clientFaqs = [
+  {key: 'cf1', category: categories[0], list: [
+      {key: 'cfaq1', answer: answers.clients.cpp1},
+      {key: 'cfaq2', answer: answers.clients.cpp2}]},
+  {key: 'cf2', category: categories[1], list: [
+      {key: 'cfaq3', answer: answers.clients.cs1},
+      {key: 'cfaq4', answer: answers.clients.cs2},
+      {key: 'cfaq5', answer: answers.clients.cs3}]},
+  {key: 'cf3', category: 'Tutors', list: [
+      {key: 'cfaq6', answer: answers.clients.ct1},
+      {key: 'cfaq7', answer: answers.clients.ct2},
+      {key: 'cfaq8', answer: answers.clients.ct3}]},
+  {key: 'cf4', category: categories[2], list: [
+      {key: 'cfaq9', answer: answers.clients.cau1},]},
 ];
+
+const tutorFaqs = [
+  {key: 'tf1', category: categories[0], list: [
+      {key: 'tfaq1', answer: answers.tutors.tpp1},
+      {key: 'tfaq2', answer: answers.tutors.tpp2}]},
+  {key: 'tf2', category: categories[1], list: [
+      {key: 'tfaq3', answer: answers.tutors.ts1},
+      {key: 'tfaq4', answer: answers.tutors.ts2},
+      {key: 'tfaq5', answer: answers.tutors.ts3}]},
+  {key: 'tf3', category: 'Clients', list: [
+      {key: 'tfaq6', answer: answers.tutors.tc1},
+      {key: 'tfaq7', answer: answers.tutors.tc2},
+      {key: 'tfaq8', answer: answers.tutors.tc3}]},
+  {key: 'tf4', category: categories[2], list: [
+      {key: 'tfaq9', answer: answers.tutors.tau1},]},
+];
+
+const faqsList = {
+  tutorFaqs: tutorFaqs, clientFaqs: clientFaqs
+};
 
 export default faqsList;

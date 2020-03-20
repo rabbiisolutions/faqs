@@ -19,7 +19,7 @@ $monitor: 1024px;
     }
 
     @include monitor {
-        width: 55%;
+        width: 60%;
     }
     margin: 0 auto;
     .categories {
@@ -27,8 +27,8 @@ $monitor: 1024px;
         flex-wrap: wrap;
     }
     .category-view {
-        // gonna have to add margin right
-        width: 33%;
+        margin: 0 2vw 2vw 0;
+        width: 29%;
         h3 {
             color: #27A1DA;
         }

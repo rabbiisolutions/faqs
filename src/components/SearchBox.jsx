@@ -68,7 +68,7 @@ class SearchBox extends React.Component {
               //console.log(category.charAt(0).toUpperCase() + category.slice(1, lastIndex));
               // clip the text length if greater than 120 characters
               text = text.length > 120 ? text.substring(0, 120) : text;
-              let matched = {category: currentUser + ' -> '+ faq.category, title: title, text: text + '...', key: 'r' + count, quizKey: quizKey};
+              let matched = {category: currentUser + ' :: '+ faq.category, title: title, text: text + '...', key: 'r' + count, quizKey: quizKey};
                 if (!Boolean(matchedList.length)
                     || (matchedList[0] !== undefined
                         && matchedList[0].title !== 'No results')) {

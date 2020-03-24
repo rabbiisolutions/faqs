@@ -14,7 +14,7 @@ class BreadCrumb extends React.Component {
     return (
         <div id={'breadcrumb'}>
           <span className={'category-name'}>{this.props.category}</span>
-          <Icon src={arrow} height={'auto'} width={'auto'} units={''} className={'arrow'}/>
+          <Icon src={arrow} height={'1.5'} width={'auto'} units={'rem'} className={'arrow'}/>
           <span className={'item-name'}>{this.props.itemName}</span>
         </div>
     )

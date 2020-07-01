@@ -50,13 +50,13 @@ class NavBar extends React.Component {
                 <span className={'text'}>{texts.menuItems[2]}</span>
               <span className={'active hidden'}>&nbsp;</span>
             </a>
-            <a className="nav-item"  href={texts.menuLinks[3]}>
-                <span className={'text'}>{texts.menuItems[3]}</span>
-              <span className={'active hidden'}>&nbsp;</span>
-            </a>
             <a className="nav-item active" href={'#start'}>
-                <span className={'text'}>{texts.menuItems[4]}</span>
+                <span className={'text'}>{texts.menuItems[3]}</span>
               <span className={'active'}>&nbsp;</span>
+            </a>
+            <a className="nav-item"  href={texts.menuLinks[3]}>
+                <span className={'text'}>{texts.menuItems[4]}</span>
+              <span className={'active hidden'}>&nbsp;</span>
             </a>
             <a className="nav-item" href={texts.menuLinks[4]}>
                 <span className={'text'}>{texts.menuItems[5]}</span>
